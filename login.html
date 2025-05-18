@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <title>Home - Exclusive E-Commerce Website</title>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital@0;1&display=swap');
+        :root {
+            --font-main: "Inter Tight", sans-serif;
+            --color-primary: #FF0000;
+            --color-dark-1: #000000;
+            --color-dark-2: #808080;
+            --color-white-1: #FFFFFF;
+        }
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        html {
+            font-size: 10px;
+        }
+        body {
+            font-family: var(--font-main);
+            font-size: 1.6em;
+        }
+        a {
+            text-decoration: none;
+        }
+        ul {
+            list-style: none;
+        }
+        .container {
+            max-width: 114rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .top_nav {
+            width: 100%;
+            height: 4rem;
+            background-color: var(--color-dark-1);
+            display: flex;
+            align-items: center;
+        }
+        .top_nav_container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .top_nav_wrapper {
+            width: 100%;
+            max-width: 114rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 0 auto;
+        }
+        .tap_nav_p {
+            color: var(--color-white-1);
+            font-size: 1.4rem;
+            margin: 0;
+        }
+        .top_nav_link {
+            color: var(--color-white-1);
+            font-weight: bold;
+            font-size: 1.4rem;
+            text-decoration: none;
+        }
+        .nav {
+            width: 100%;
+            height: 8rem;
+            border-bottom: 1px solid var(--color-dark-2);
+            background: #fff;
+            display: flex;
+            align-items: center;
+        }
+        .nav_container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 114rem;
+            margin: 0 auto;
+        }
+        .nav_logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--color-dark-1);
+        }
+        .nav_list {
+            display: flex;
+            gap: 2rem;
+        }
+        .nav_link {
+            color: var(--color-dark-1);
+            font-size: 1.4rem;
+            font-weight: 500;
+        }
+        .nav_items {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .nav_form {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--color-dark-2);
+            border-radius: 2rem;
+            padding: 0.2rem 1rem;
+            background: #f9f9f9;
+        }
+        .nav_input {
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 1.4rem;
+            padding: 0.5rem;
+        }
+        .nav_search {
+            width: 20px;
+            height: 20px;
+            margin-left: 0.5rem;
+            cursor: pointer;
+        }
+        .nav_heart, .nav_cart {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+        .section {
+            margin-top: 10rem;
+        }
+        .auth_container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            height: 90vh;
+        }
+        .auth_img {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .auth_img img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+        }
+        .auth_content {
+            width: 50%;
+            padding: 10rem;
+        }
+        .form_title {
+            font-size: 3.2rem;
+        }
+        .auth_p {
+            margin: 2rem 0rem;
+        }
+        .form_group {
+            width: 100%;
+        }
+        .form_input {
+            width: 100%;
+            margin-bottom: 2rem;
+            padding: 1rem .6rem;
+            border: none;
+            outline: none;
+            border-bottom: 1px solid var(--color-dark-2);
+        }
+        .form_pass {
+            margin-bottom: 1rem;
+        }
+        .form_btn {
+            width: 100%;
+            padding: 1.3rem;
+            background-color: var(--color-primary);
+            color: var(--color-white-1);
+            border: none;
+            outline: none;
+            margin-bottom:1.5rem;
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+        .form_link {
+            color: var(--color-white-1);
+        }
+        .form_group > span {
+            margin-top: 2rem;
+            display: inline-block;
+        }
+        .form_auth_link {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+        /* Footer styles */
+        .footer {
+            margin-top: 10rem;
+            background-color: var(--color-dark-1);
+        }
+        .footer_container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+            grid-gap: 3rem;
+            padding: 5rem 0rem;
+            color: var(--color-white-1);
+        }
+        .footer_logo {
+            font-size: 3rem;
+            color: var(--color-white-1);
+            font-weight: 700;
+        }
+        .footer_p {
+            margin-top: 1.2rem;
+        }
+        .footer_item_title {
+            margin-bottom: 1.2rem;
+        }
+        .footer_list_item {
+            margin: .5rem 0rem;
+        }
+        .footer_bottom_container {
+            width: 100%;
+            text-align: center;
+        }
+        .footer_copy {
+            color: var(--color-dark-2);
+            padding: 1.5rem 0rem;
+        }
+        @media (max-width: 900px) {
+            .auth_container {
+                flex-direction: column;
+                height: auto;
+            }
+            .auth_img, .auth_content {
+                width: 100%;
+                padding: 2rem;
+            }
+            .auth_content {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+    <section class="section">
+        <div class="container auth_container">
+            <div class="auth_img">
+                <img src="./image/signim.png" alt="Sign up illustration" class="auth_image">
+            </div>
+            <div class="auth_content">
+                <form action="" class="auth_form">
+                    <h2 class="form_title">Create your account</h2>
+                    <p class="auth_p">Enter your details below</p>
+                
+                    <div class="form_group form_pass">
+                        <input type="email" placeholder="Email" class="form_input" required>
+                    </div>
+                    <div class="form_group">
+                        <input type="password" placeholder="Password" class="form_input" required>
+                    </div>
+                    <div class="form_group">
+                        <button type="submit" class="form_btn">Create Account</button>
+                    </div>
+                    <div class="form_group">
+                        <span>Don't have an Account? <a href="./sign-up.html" class="form_auth_link">Register</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container footer_container">
+            <div class="footer_item">
+                <a href="#" class="footer_logo">Exclusive</a>
+                <div class="footer_p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maxime non optio.</div>
+            </div>
+            <div class="footer_item">
+                <h3 class="footer_item_title">Support</h3>
+                <ul class="footer_list">
+                    <li class="footer_list_item">Stockholm, Sweden</li>
+                    <li class="footer_list_item">email.@gmail.com</li>
+                    <li class="footer_list_item">+46 123 456 78</li>
+                    <li class="footer_list_item">+46 72 345 65</li>
+                </ul>
+            </div>
+            <div class="footer_item">
+                <h3 class="footer_item_title">Account</h3>
+                <ul class="footer_list">
+                    <li class="footer_list_item">Login / Register</li>
+                    <li class="footer_list_item">Cart</li>
+                    <li class="footer_list_item">Shop</li>
+                </ul>
+            </div>
+            <div class="footer_item">
+                <h3 class="footer_item_title">Info</h3>
+                <ul class="footer_list">
+                    <li class="footer_list_item">Privacy policy</li>
+                    <li class="footer_list_item">Terms of use</li>
+                    <li class="footer_list_item">FAQ's</li>
+                    <li class="footer_list_item">Contact</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="container footer_bottom_container">
+                <p class="footer_copy">Copyright Exclusive 2023. All right reserved</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>

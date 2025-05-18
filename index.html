@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <title>Home - Exclusive E-Commerce Website</title>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital@0;1&display=swap');
+        :root {
+            --font-main: "Inter Tight", sans-serif;
+            --color-primary: #FF0000;
+            --color-dark-1: #000000;
+            --color-dark-2: #808080;
+            --color-white-1: #FFFFFF;
+        }
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        html {
+            font-size: 10px;
+        }
+        body {
+            font-family: var(--font-main);
+            font-size: 1.6em;
+        }
+        a {
+            text-decoration: none;
+        }
+        ul {
+            list-style: none;
+        }
+        .container {
+            max-width: 114rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .top_nav {
+            width: 100%;
+            height: 4rem;
+            background-color: var(--color-dark-1);
+            display: flex;
+            align-items: center;
+        }
+        .top_nav_container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .top_nav_wrapper {
+            width: 100%;
+            max-width: 114rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 0 auto;
+        }
+        .tap_nav_p {
+            color: var(--color-white-1);
+            font-size: 1.4rem;
+            margin: 0;
+        }
+        .top_nav_link {
+            color: var(--color-white-1);
+            font-weight: bold;
+            font-size: 1.4rem;
+            text-decoration: none;
+        }
+        .nav {
+            width: 100%;
+            height: 8rem;
+            border-bottom: 1px solid var(--color-dark-2);
+            background: #fff;
+            display: flex;
+            align-items: center;
+        }
+        .nav_container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 114rem;
+            margin: 0 auto;
+        }
+        .nav_logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--color-dark-1);
+        }
+        .nav_list {
+            display: flex;
+            gap: 2rem;
+        }
+        .nav_link {
+            color: var(--color-dark-1);
+            font-size: 1.4rem;
+            font-weight: 500;
+        }
+        .nav_items {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .nav_form {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--color-dark-2);
+            border-radius: 2rem;
+            padding: 0.2rem 1rem;
+            background: #f9f9f9;
+        }
+        .nav_input {
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 1.4rem;
+            padding: 0.5rem;
+        }
+        .nav_search {
+            width: 20px;
+            height: 20px;
+            margin-left: 0.5rem;
+            cursor: pointer;
+        }
+        .nav_heart, .nav_cart {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+        .header_container {
+            width: 100%;
+            display: flex;
+            margin-top: 4rem;
+        }
+        .header_filter {
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 1rem;
+        }
+        .header_filter_link {
+            color: var(--color-dark-1);
+            font-size: 1.4rem;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            transition: color 0.2s;
+        }
+        .header_filter_link:hover {
+            color: var(--color-primary);
+        }
+        .header_img {
+            width: 60%;
+            max-width: 400px;
+            height: 250px;
+            object-fit: contain;
+            display: block;
+            border-radius: 1rem;
+            background: #f5f5f5;
+        }
+        @media (max-width: 900px) {
+            .header_container {
+                flex-direction: column;
+            }
+            .header_filter, .header_img {
+                width: 100%;
+            }
+        }
+        /* section */
+        .section {
+            margin-top: 10rem;
+        }
+        /* flash sale */
+        .section_category_p {
+            border-left: 1.4rem solid var(--color-primary);
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+            font-size: 1.3rem; 
+        }
+        .section_header {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 4rem;
+        }
+        .section_title {
+            margin-right: 2rem;
+            font-size: 2.6rem;
+        }
+        #demo {
+            font-size: 1.8rem;
+        }
+        /* Swiper styles */
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* Card styles */
+        .card {
+            width: 100%;
+            max-width: 300px;
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .card_top {
+            width: 100%;
+            height: 22rem;
+            position: relative;
+        }
+        .card_img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .card_tag {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            z-index: 9;
+            background-color: var(--color-primary);
+            padding: .4rem .7rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-white-1);
+            border-radius: .5rem;
+        }
+        .card_top_icons {
+            position: absolute;
+            z-index: 9;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .card_top_icon {
+            width: 3.4rem;
+            height: 3.4rem;
+            padding: 1rem;
+            background-color: var(--color-white-1);
+            border-radius: 10rem;
+        }
+        .card_body {
+            margin-top: 1rem;
+            text-align: left;
+            padding: 1rem;
+        }
+        .card_title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .card_price {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        .card_ratings {
+            display: flex;
+            align-items: center;
+        }
+        .card_stars {
+            margin-right: 1rem;
+            display: flex;
+            gap: 0.2rem;
+        }
+        .cards_rating_number {
+            font-size: 1.2rem;
+            color: #888;
+        }
+        .size-6 {
+            width: 2rem;
+            height: 2rem;
+        }
+        .container_button {
+            width: 100%;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        .container_btn_a {
+            background-color: var(--color-primary);
+            color: var(--color-white-1);
+            padding: 1.6rem 3rem;
+            border-radius: .5rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="top_nav">
+      <div class="top_nav_container">
+        <div class="top_nav_wrapper">
+          <p class="tap_nav_p">
+            Summer Sale For Swim Suit And Free Express Delivery - OFF 50%!
+          </p>
+          <a href="#" class="top_nav_link">SHOP NOW</a>
+        </div>
+      </div>
+    </div>
+    <nav class="nav">
+      <div class="container nav_container">
+        <a href="#" class="nav_logo">Exclusive</a>
+        <ul class="nav_list">
+          <li class="nav_item"><a href="/" class="nav_link">HOME</a></li>
+          <li class="nav_item"><a href="/about.html" class="nav_link">ABOUT</a></li>
+          <li class="nav_item"><a href="#" class="nav_link">CONTACT</a></li>
+          <li class="nav_item"><a href="/sign-up.html" class="nav_link">SIGN UP</a></li>
+        </ul>
+        <div class="nav_items">
+          <form action="#" class="nav_form">
+            <input type="text" class="nav_input" placeholder="Search..." />
+            <img src="./image/search.png" alt="Search" class="nav_search">
+          </form>
+          <img src="./image/heart.png" alt="Wishlist" class="nav_heart">
+          <a href="/cart.html">
+                      <img src="./image/cart.png" alt="Cart" class="nav_cart">
+          </a>
+        </div>
+        <span class="hambarger">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+</svg>
+
+        </span>
+      </div>
+    </nav>
+    <header class="header">
+      <div class="container header_container">
+        <div class="header_filter">
+          <a href="#" class="header_filter_link">WOMEN's FASHION</a>
+          <a href="#" class="header_filter_link">MEN's FASHION</a>
+          <a href="#" class="header_filter_link">ELECTRONIC's</a>
+          <a href="#" class="header_filter_link">HOME & LIFESTYLE</a>
+          <a href="#" class="header_filter_link">MEDICINES</a>
+          <a href="#" class="header_filter_link">SPORTS</a>
+          <a href="#" class="header_filter_link">HEALTH & BEAUTY</a>
+          <a href="#" class="header_filter_link">BABYS & TOYS</a>
+          <a href="#" class="header_filter_link">GROCERIES & PETS</a>
+        </div>
+        <img src="./header.png" alt="Header Banner" class="header_img">
+      </div>
+    </header>
+    <section class="section">
+        <div class="container">
+            <div class="section_catgory">
+                 <p class="section_category_p">Today's</p>
+            </div>
+            <div class="section_header">
+                <h3 class="section_title">Flash Sale</h3>
+                <p id="demo"></p>
+            </div>
+            <!-- Swiper Example -->
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Item 1 -->
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <div class="card_top">
+                                <img src="./image/item/item 1.png" alt="" class="card_img" />
+                                <div class="card_tag">-40%</div>
+                                <div class="card_top_icons">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_top_icon">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_top_icon">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="card_body">
+                                <h3 class="card_title">Women Printed Kurta</h3>
+                                <p class="card_price">$12</p>
+                                <div class="card_ratings">
+                                    <div class="card_stars">
+                                        <!-- 5 stars -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div class="cards_rating_number">(88)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <div class="card_top">
+                                <img src="./image/item/item 2.png" alt="" class="card_img" />
+                                <div class="card_tag">-20%</div>
+                                <div class="card_top_icons">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_top_icon">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_top_icon">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="card_body">
+                                <h3 class="card_title">Mens Wrist Watch</h3>
+                                <p class="card_price">$25</p>
+                                <div class="card_ratings">
+                                    <div class="card_stars">
+                                        <!-- 3 stars -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div class="cards_rating_number">(67)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <div class="card_top">
+                                <img src="./image/item/item 3.png" alt="" class="card_img" />
+                                <div class="card_tag">-10%</div>
+                                <div class="card_top_icons">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_top_icon">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_top_icon">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="card_body">
+                                <h3 class="card_title">Samsung Galaxy A12</h3>
+                                <p class="card_price">$340</p>
+                                <div class="card_ratings">
+                                    <div class="card_stars">
+                                        <!-- 4 stars -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div class="cards_rating_number">(78)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <div class="card_top">
+                                <img src="./image/item/item 4.png" alt="" class="card_img" />
+                                <div class="card_tag">-15%</div>
+                                <div class="card_top_icons">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_top_icon">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_top_icon">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="card_body">
+                                <h3 class="card_title">Mens Shoe</h3>
+                                <p class="card_price">$125</p>
+                                <div class="card_ratings">
+                                    <div class="card_stars">
+                                        <!-- 5 stars -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div class="cards_rating_number">(100)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <!-- Button moved below the Swiper carousel -->
+            <div class="container_button">
+                <a href="#" class="container_btn_a">VIEW ALL PRODUCTS</a>
+            </div>
+        </div>
+    </section>
+     <section class="section">
+        <div class="container">
+            <div class="section_catgory">
+                 <p class="section_category_p">This Month</p>
+            </div>
+            <div class="section_header">
+                <h3 class="section_title">Best Selling Products</h3>
+                <p id="demo"></p>
+            </div>
+            <!-- Swiper Example -->
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Item 1 -->
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <div class="card_top">
+                                <img src="./image/item/item 8.png" alt="" class="card_img" />
+                                <div class="card_top_icons">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_top_icon">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_top_icon">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="card_body">
+                                <h3 class="card_title">Men’s & Boys Shoe...</h3>
+                                <p class="card_price">$48</p>
+                                <div class="card_ratings">
+                                    <div class="card_stars">
+                                        <!-- 5 stars -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div class="cards_rating_number">(988)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <div class="card_top">
+                                <img src="./image/item/item 7.png" alt="" class="card_img" />
+                                <div class="card_top_icons">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_top_icon">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_top_icon">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="card_body">
+                                <h3 class="card_title">Black Jacket 12...</h3>
+                                <p class="card_price">$5O</p>
+                                <div class="card_ratings">
+                                    <div class="card_stars">
+                                        <!-- 3.5 stars -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div class="cards_rating_number">(667)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <div class="card_top">
+                                <img src="./image/item/item 6.png" alt="" class="card_img" />
+                                <div class="card_top_icons">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_top_icon">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_top_icon">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="card_body">
+                                <h3 class="card_title">Denim Dress</h3>
+                                <p class="card_price">$35</p>
+                                <div class="card_ratings">
+                                    <div class="card_stars">
+                                        <!-- 4.5 stars -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div class="cards_rating_number">(728)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <div class="card_top">
+                                <img src="./image/item/item 5.png" alt="" class="card_img" />
+                                <div class="card_top_icons">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_top_icon">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="card_top_icon">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="card_body">
+                                <h3 class="card_title">Nike Sneakers</h3>
+                                <p class="card_price">$30</p>
+                                <div class="card_ratings">
+                                    <div class="card_stars">
+                                        <!-- 2.5 stars -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div class="cards_rating_number">(150)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <!-- Button moved below the Swiper carousel -->
+            <div class="container_button">
+                <a href="#" class="container_btn_a">VIEW ALL PRODUCTS</a>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container footer_container">
+            <div class="footer_item">
+                <a href="#" class="footer_logo">Exclusive</a>
+                <div class="footer_p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maxime non optio.</div>
+            </div>
+            <div class="footer_item">
+                <h3 class="footer_item_title">Support</h3>
+                <ul class="footer_list">
+                    <li class="footer_list_item">Stockholm, Sweden</li>
+                    <li class="footer_list_item">email.@gmail.com</li>
+                    <li class="footer_list_item">+46 123 456 78</li>
+                    <li class="footer_list_item">+46 72 345 65</li>
+                </ul>
+                <head>
+    <!-- ...existing code... -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital@0;1&display=swap');
+        :root {
+            --font-main: "Inter Tight", sans-serif;
+            --color-primary: #FF0000;
+            --color-dark-1: #000000;
+            --color-dark-2: #808080;
+            --color-white-1: #FFFFFF;
+        }
+        /* ...existing styles... */
+
+        /* footer */
+        .footer {
+            margin-top: 10rem;
+            background-color: var(--color-dark-1);
+        }
+        .footer_container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+            grid-gap: 3rem;
+            padding: 5rem 0rem;
+            color: var(--color-white-1);
+        }
+        .footer_logo {
+            font-size: 3rem;
+            color: var(--color-white-1);
+            font-weight: 700;
+        }
+        .footer_p {
+            margin-top: 1.2rem;
+        }
+        .footer_item_title {
+            margin-bottom: 1.2rem;
+        }
+        .footer_list_item {
+            margin: .5rem 0rem;
+        }
+        .footer_bottom_container {
+            width: 100%;
+            text-align: center;
+        }
+        .footer_copy {
+            color: var(--color-dark-2);
+            padding: 1.5rem 0rem;
+        }
+    </style>
+<!-- ...existing code... -->
+            </div>
+            <div class="footer_item">
+                <h3 class="footer_item_title">Support</h3>
+                <ul class="footer_list">
+                    <li class="footer_list_item">Account</li>
+                    <li class="footer_list_item">Login / Register</li>
+                    <li class="footer_list_item">Cart</li>
+                    <li class="footer_list_item">Shop</li>
+                </ul>
+            </div>
+            <div class="footer_item">
+                <h3 class="footer_item_title">Support</h3>
+                <ul class="footer_list">
+                    <li class="footer_list_item">Privacy policy</li>
+                    <li class="footer_list_item">Terms of use</li>
+                    <li class="footer_list_item">FAQ's</li>
+                    <li class="footer_list_item">Contact</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="container footer_bottom_container">
+                <p class="footer_copy">Copyright Exclusive 2023. All right reserved</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
